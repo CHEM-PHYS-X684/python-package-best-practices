@@ -83,25 +83,25 @@ If these functions do not result in an error, `pytest` counts the function as pa
 If an error occurs, the test fails.
 
 CookieCutter has already created a test for us. Let's examine this file.
-In a text editor, open `molecool/tests/test_molecool.py`.
+In a text editor, open `my_repo/tests/test_my_repo.py`.
 
 ~~~
 """
-Unit and regression test for the molecool package.
+Unit and regression test for the my_repo package.
 """
 
 # Import package, test suite, and other packages as needed
-import molecool
+import my_repo
 import pytest
 import sys
 
-def test_molecool_imported:
+def test_my_repo_imported:
     """Sample test, will always pass so long as import statement worked"""
-    assert "molecool" in sys.modules
+    assert "my_repo" in sys.modules
 ~~~
 {: .language-python}
 
-This file begins with `test_`, and contains a single function `test_molecool`.
+This file begins with `test_`, and contains a single function `test_my_repo`.
 This module will import our package, then checks to see if it has been imported correctly by checking if the package name is in the list of imported modules.
 
 The last line, containing the python keyword `assert`, is called an assertion.
@@ -122,18 +122,18 @@ You should see an output similar to the following.
 ~~~
 ============================= test session starts ==============================
 platform darwin -- Python 3.6.8, pytest-3.6.4, py-1.5.4, pluggy-0.6.0
-rootdir: /Users/jessica/dev/molecool, inifile:
+rootdir: /Users/jessica/dev/my_repo, inifile:
 collected 1 item
 
-molecool/tests/test_molecool.py .                    [100%]
+my_repo/tests/test_my_repo.py .                    [100%]
 
 =========================== 1 passed in 0.06 seconds ===========================
 ~~~
 {: .output}
 
 Here, `pytest` has looked through our directory and its subdirectories for anything matching `test*`.
-It found the `tests` folder, and within that folder, it found the file `test_molecool.py`.
-It then executed the function `test_molecool_imported` within that module.
+It found the `tests` folder, and within that folder, it found the file `test_my_repo.py`.
+It then executed the function `test_my_repo_imported` within that module.
 Since our `assertion` was `True`, our test did not result in an error and the test passed.
 
 We can see the names of the tests `pytest` ran by adding a `-v` tag to the pytest command.
@@ -150,10 +150,10 @@ There are a number of additional command line arguments to [explore](https://doc
 ============================= test session starts ==============================
 platform darwin -- Python 3.6.8, pytest-3.6.4, py-1.5.4, pluggy-0.6.0 -- /Users/jessica/miniconda3/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/jessica/dev/molecool, inifile:
+rootdir: /Users/jessica/dev/my_repo, inifile:
 collected 1 item
 
-molecool/tests/test_molecool.py::test_molecool_imported PASSED [100%]
+my_repo/tests/test_my_repo.py::test_my_repo_imported PASSED [100%]
 
 =========================== 1 passed in 0.06 seconds ===========================
 ~~~
@@ -175,7 +175,7 @@ Unit and regression test for the measure module.
 """
 
 # Import package, test suite, and other packages as needed
-import molecool
+import my_repo
 import numpy as np
 
 def test_calculate_distance():
@@ -186,7 +186,7 @@ def test_calculate_distance():
 
     expected_distance = 1
 
-    calculated_distance = molecool.calculate_distance(r1, r2)
+    calculated_distance = my_repo.calculate_distance(r1, r2)
 
     assert expected_distance == calculated_distance
 ~~~
@@ -208,11 +208,11 @@ You should now see an output similar to the following
 ~~~
 ============================================================ test session starts ============================================================
 platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0
-rootdir: /Users/jessica/lessons/molecool
+rootdir: /Users/jessica/lessons/my_repo
 collected 2 items
 
-molecool/tests/test_molecool.py::test_molecool_imported PASSED [ 50%]
-molecool/tests/test_measure.py::test_calculate_distance PASSED           [100%]
+my_repo/tests/test_my_repo.py::test_my_repo_imported PASSED [ 50%]
+my_repo/tests/test_measure.py::test_calculate_distance PASSED           [100%]
 
 =========================== 2 passed in 0.07 seconds ===========================
 ~~~
@@ -235,11 +235,11 @@ $ pytest -v
 ~~~
 ============================================================ test session starts ============================================================
 platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0
-rootdir: /Users/jessica/lessons/molecool
+rootdir: /Users/jessica/lessons/my_repo
 collected 2 items
 
-molecool/tests/test_molecool.py::test_molecool_imported PASSED [ 50%]
-molecool/tests/test_measure.py::test_calculate_distance FAILED           [100%]
+my_repo/tests/test_my_repo.py::test_my_repo_imported PASSED [ 50%]
+my_repo/tests/test_measure.py::test_calculate_distance FAILED           [100%]
 
 =========================== 2 passed in 0.07 seconds ===========================
 
@@ -254,12 +254,12 @@ ___________________________________________________________ test_calculate_dista
     
         expected_distance = 2
     
-        calculated_distance = molecool.calculate_distance(r1, r2)
+        calculated_distance = my_repo.calculate_distance(r1, r2)
     
 >       assert expected_distance == calculated_distance
 E       assert 2 == 1.0
 
-molecool/tests/test_measure.py:26: AssertionError
+my_repo/tests/test_measure.py:26: AssertionError
 ======================================================== 1 failed, 1 passed in 0.56s =========================================================
 ~~~
 {: .output}
@@ -295,7 +295,7 @@ This runtime analysis is one of the advantages of pytest that help you debug you
 >> 
 >>     expected_distance = 2
 >> 
->>     calculated_distance = molecool.calculate_distance(r1, r2)
+>>     calculated_distance = my_repo.calculate_distance(r1, r2)
 >> 
 >>     if expected_distance != calculated_distance:
 >>         raise Exception("My test will fail!")
@@ -335,7 +335,7 @@ Change the expected value back to 1 so that your tests pass and make sure you ha
 >> 
 >>    expected_value = 90
 >> 
->>    calculated_value = molecool.calculate_angle(r1, r2, r3, degrees=True)
+>>    calculated_value = my_repo.calculate_angle(r1, r2, r3, degrees=True)
 >>    assert expected_value == calculated_value
 >> ~~~
 >> {: .language-python}
@@ -371,7 +371,7 @@ def test_build_bond_list():
         [1, 1, -0.4],
     ])
 
-    bonds = molecool.build_bond_list(coordinates)
+    bonds = my_repo.build_bond_list(coordinates)
 
     assert len(bonds) == 4
 
@@ -417,7 +417,7 @@ def test_build_bond_failure():
     ])
 
     with pytest.raises(ValueError):
-        bonds = molecool.build_bond_list(coordinates, min_bond=-1)
+        bonds = my_repo.build_bond_list(coordinates, min_bond=-1)
 ~~~
 {: .language-python}
 
@@ -463,7 +463,7 @@ If you ensure that your tests first fail THEN pass, you know that you have reall
 > def test_molecular_mass():
 >     symbols = ['C', 'H', 'H', 'H', 'H']
 >
->     calculated_mass = molecool.calculate_molecular_mass(symbols)
+>     calculated_mass = my_repo.calculate_molecular_mass(symbols)
 > 
 >     actual_mass = 16.04
 > 
@@ -513,8 +513,8 @@ If you ensure that your tests first fail THEN pass, you know that you have reall
 >> {: .language-python}
 >> because if you forgot to add this function you will get the following error message when running pytest
 >> ~~~
->> >       calculated_mass = molecool.calculate_molecular_mass(symbols)
->> E       AttributeError: module 'molecool' has no attribute 'calculate_molecular_mass'
+>> >       calculated_mass = my_repo.calculate_molecular_mass(symbols)
+>> E       AttributeError: module 'my_repo' has no attribute 'calculate_molecular_mass'
 >> ~~~
 >> {: .error}
 > {: .solution}
@@ -570,7 +570,7 @@ If you ensure that your tests first fail THEN pass, you know that you have reall
 >     symbols = np.array(['C', 'H', 'H', 'H', 'H'])
 >     coordinates = np.array([[1,1,1], [2.4,1,1], [-0.4, 1, 1], [1, 1, 2.4], [1, 1, -0.4]])
 > 
->     center_of_mass = molecool.calculate_center_of_mass(symbols, coordinates)
+>     center_of_mass = my_repo.calculate_center_of_mass(symbols, coordinates)
 > 
 >     expected_center = np.array([1,1,1])
 > 
@@ -592,7 +592,7 @@ If you ensure that your tests first fail THEN pass, you know that you have reall
 >>     symbols = np.array(['C', 'H', 'H', 'H', 'H'])
 >>     coordinates = np.array([[1,1,1], [2.4,1,1], [-0.4, 1, 1], [1, 1, 2.4], [1, 1, -0.4]])
 >> 
->>     center_of_mass = molecool.calculate_center_of_mass(symbols, coordinates)
+>>     center_of_mass = my_repo.calculate_center_of_mass(symbols, coordinates)
 >> 
 >>     expected_center = np.array([1,1,1])
 >> 
@@ -681,7 +681,7 @@ def test_calculate_distance():
 
     expected_distance = 1
 
-    calculated_distance = molecool.calculate_distance(r1, r2)
+    calculated_distance = my_repo.calculate_distance(r1, r2)
 
     assert expected_distance == calculated_distance
 ~~~
@@ -690,7 +690,7 @@ def test_calculate_distance():
 When you run your tests, you will see that this test is now skipped:
 
 ~~~
-molecool/tests/test_measure.py::test_calculate_distance SKIPPED
+my_repo/tests/test_measure.py::test_calculate_distance SKIPPED
 ~~~
 {: .output}
 
@@ -711,7 +711,7 @@ def test_calculate_distance():
 
     expected_distance = 1
 
-    calculated_distance = molecool.calculate_distance(r1, r2)
+    calculated_distance = my_repo.calculate_distance(r1, r2)
 
     assert expected_distance == calculated_distance
 ~~~
@@ -767,7 +767,7 @@ For example, our `test_molecular_mass` function becomes.
 def test_molecular_mass(methane_molecule):
     symbols, coordinates = methane_molecule
     
-    calculated_mass = molecool.calculate_molecular_mass(symbols)
+    calculated_mass = my_repo.calculate_molecular_mass(symbols)
 
     actual_mass = 16.04
 
@@ -792,7 +792,7 @@ After filling in your fixture to other tests, your `test_molecule.py` file shoul
 Testing for molecule module
 """
 
-import molecool
+import my_repo
 import pytest
 import sys
 
@@ -815,7 +815,7 @@ def methane_molecule():
 def test_build_bond_list(methane_molecule):
     symbols, coordinates = methane_molecule
 
-    bonds = molecool.build_bond_list(coordinates)
+    bonds = my_repo.build_bond_list(coordinates)
 
     assert len(bonds) == 4
 
@@ -825,7 +825,7 @@ def test_build_bond_list(methane_molecule):
 def test_molecular_mass(methane_molecule):
     symbols, coordinates = methane_molecule
     
-    calculated_mass = molecool.calculate_molecular_mass(symbols)
+    calculated_mass = my_repo.calculate_molecular_mass(symbols)
 
     actual_mass = 16.04
 
@@ -835,12 +835,12 @@ def test_build_bond_list_failure(methane_molecule):
     symbols, coordinates = methane_molecule
     
     with pytest.raises(ValueError):
-        molecool.build_bond_list(coordinates, min_bond=-1)
+        my_repo.build_bond_list(coordinates, min_bond=-1)
 
 def test_center_of_mass(methane_molecule):
     symbols, coordinates = methane_molecule
 
-    center_of_mass = molecool.calculate_center_of_mass(symbols, coordinates)
+    center_of_mass = my_repo.calculate_center_of_mass(symbols, coordinates)
 
     expected_center = np.array([1,1,1])
     
@@ -944,7 +944,7 @@ For example, for testing our `calculate_angle` function, we might test several a
 ])
 def test_calculate_angle_many(p1, p2, p3, expected_angle):
 
-    calculated_angle = molecool.calculate_angle(p1, p2, p3, degrees=True)
+    calculated_angle = my_repo.calculate_angle(p1, p2, p3, degrees=True)
 
     assert expected_angle == pytest.approx(calculated_angle), F'{calculated_angle} {expected_angle}'
 ~~~
@@ -959,14 +959,14 @@ $ pytest -v -k "test_calculate_angle_many"
 
 ~~~
 ============================================================= test session starts =============================================================
-platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0 -- /Users/jessica/miniconda3/envs/molecool/bin/python
+platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0 -- /Users/jessica/miniconda3/envs/my_repo/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/jessica/lessons/molecool
+rootdir: /Users/jessica/lessons/my_repo
 collected 14 items / 11 deselected / 3 selected                                                                                               
 
-molecool/tests/test_measure.py::test_calculate_angle_many[p10-p20-p30-45] PASSED                                                        [ 33%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p11-p21-p31-60] PASSED                                                        [ 66%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p12-p22-p32-30] PASSED                                                        [100%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p10-p20-p30-45] PASSED                                                        [ 33%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p11-p21-p31-60] PASSED                                                        [ 66%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p12-p22-p32-30] PASSED                                                        [100%]
 
 ====================================================== 3 passed, 7 deselected in 0.44s =======================================================
 ~~~
@@ -1008,30 +1008,30 @@ For example, in the docstring of our function `calculate_distance` we have:
 If the output is not `0.1`, `pytest` will treat the example test as a failure.
 
 We can test docstrings by adding the option `--doctest-modules`.
-If you are in the top level of your project, you will have to also give the name of the project folder (which is `molecool`) after the option.
+If you are in the top level of your project, you will have to also give the name of the project folder (which is `my_repo`) after the option.
 ~~~
-$ pytest -v --doctest-modules molecool
+$ pytest -v --doctest-modules my_repo
 ~~~
 {: .language-bash}
 
 ~~~
 =========================================================================== test session starts ===========================================================================
-platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0 -- /Users/jessica/miniconda3/envs/molecool/bin/python
+platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0 -- /Users/jessica/miniconda3/envs/my_repo/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/jessica/lessons/molecool
+rootdir: /Users/jessica/lessons/my_repo
 collected 11 items                                                                                                                                                        
 
-molecool/measure.py::molecool.measure.calculate_distance PASSED                                                                                                     [  9%]
-molecool/tests/test_measure.py::test_molecool_imported PASSED                                                                                                       [ 18%]
-molecool/tests/test_measure.py::test_calculate_distance PASSED                                                                                                      [ 27%]
-molecool/tests/test_measure.py::test_calculate_angle_90 PASSED                                                                                                      [ 36%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p10-p20-p30-45] PASSED                                                                                    [ 45%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p11-p21-p31-60] PASSED                                                                                    [ 54%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p12-p22-p32-30] PASSED                                                                                    [ 63%]
-molecool/tests/test_molecule.py::test_build_bond_list_default PASSED                                                                                                [ 72%]
-molecool/tests/test_molecule.py::test_molecular_mass PASSED                                                                                                         [ 81%]
-molecool/tests/test_molecule.py::test_build_bond_list_failure PASSED                                                                                                [ 90%]
-molecool/tests/test_molecule.py::test_center_of_mass PASSED                                                                                                         [100%]
+my_repo/measure.py::my_repo.measure.calculate_distance PASSED                                                                                                     [  9%]
+my_repo/tests/test_measure.py::test_my_repo_imported PASSED                                                                                                       [ 18%]
+my_repo/tests/test_measure.py::test_calculate_distance PASSED                                                                                                      [ 27%]
+my_repo/tests/test_measure.py::test_calculate_angle_90 PASSED                                                                                                      [ 36%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p10-p20-p30-45] PASSED                                                                                    [ 45%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p11-p21-p31-60] PASSED                                                                                    [ 54%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p12-p22-p32-30] PASSED                                                                                    [ 63%]
+my_repo/tests/test_molecule.py::test_build_bond_list_default PASSED                                                                                                [ 72%]
+my_repo/tests/test_molecule.py::test_molecular_mass PASSED                                                                                                         [ 81%]
+my_repo/tests/test_molecule.py::test_build_bond_list_failure PASSED                                                                                                [ 90%]
+my_repo/tests/test_molecule.py::test_center_of_mass PASSED                                                                                                         [100%]
 
 =========================================================================== 11 passed in 0.42s ============================================================================
 ~~~
@@ -1044,25 +1044,25 @@ Change the expected answer to 0.2 in the docstring and re-run the test to get th
 
 ~~~
 =========================================================================== test session starts ===========================================================================
-platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0 -- /Users/jessica/miniconda3/envs/molecool/bin/python
+platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0 -- /Users/jessica/miniconda3/envs/my_repo/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/jessica/lessons/molecool
+rootdir: /Users/jessica/lessons/my_repo
 collected 11 items                                                                                                                                                        
 
-molecool/measure.py::molecool.measure.calculate_distance FAILED                                                                                                     [  9%]
-molecool/tests/test_measure.py::test_molecool_imported PASSED                                                                                                       [ 18%]
-molecool/tests/test_measure.py::test_calculate_distance PASSED                                                                                                      [ 27%]
-molecool/tests/test_measure.py::test_calculate_angle_90 PASSED                                                                                                      [ 36%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p10-p20-p30-45] PASSED                                                                                    [ 45%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p11-p21-p31-60] PASSED                                                                                    [ 54%]
-molecool/tests/test_measure.py::test_calculate_angle_many[p12-p22-p32-30] PASSED                                                                                    [ 63%]
-molecool/tests/test_molecule.py::test_build_bond_list_default PASSED                                                                                                [ 72%]
-molecool/tests/test_molecule.py::test_molecular_mass PASSED                                                                                                         [ 81%]
-molecool/tests/test_molecule.py::test_build_bond_list_failure PASSED                                                                                                [ 90%]
-molecool/tests/test_molecule.py::test_center_of_mass PASSED                                                                                                         [100%]
+my_repo/measure.py::my_repo.measure.calculate_distance FAILED                                                                                                     [  9%]
+my_repo/tests/test_measure.py::test_my_repo_imported PASSED                                                                                                       [ 18%]
+my_repo/tests/test_measure.py::test_calculate_distance PASSED                                                                                                      [ 27%]
+my_repo/tests/test_measure.py::test_calculate_angle_90 PASSED                                                                                                      [ 36%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p10-p20-p30-45] PASSED                                                                                    [ 45%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p11-p21-p31-60] PASSED                                                                                    [ 54%]
+my_repo/tests/test_measure.py::test_calculate_angle_many[p12-p22-p32-30] PASSED                                                                                    [ 63%]
+my_repo/tests/test_molecule.py::test_build_bond_list_default PASSED                                                                                                [ 72%]
+my_repo/tests/test_molecule.py::test_molecular_mass PASSED                                                                                                         [ 81%]
+my_repo/tests/test_molecule.py::test_build_bond_list_failure PASSED                                                                                                [ 90%]
+my_repo/tests/test_molecule.py::test_center_of_mass PASSED                                                                                                         [100%]
 
 ================================================================================ FAILURES =================================================================================
-______________________________________________________________ [doctest] molecool.measure.calculate_distance ______________________________________________________________
+______________________________________________________________ [doctest] my_repo.measure.calculate_distance ______________________________________________________________
 015     Returns
 016     -------
 017     distance : float
@@ -1078,7 +1078,7 @@ Expected:
 Got:
     0.1
 
-/Users/jessica/lessons/molecool/molecool/measure.py:24: DocTestFailure
+/Users/jessica/lessons/my_repo/my_repo/measure.py:24: DocTestFailure
 ====================================================================== 1 failed, 10 passed in 0.41s =======================================================================
 ~~~
 {: .output}
@@ -1093,31 +1093,31 @@ We already have everything we need for this since we installed `pytest-cov` earl
 We can assess our code coverage as follows:
 
 ~~~
-pytest --cov=molecool
+pytest --cov=my_repo
 ~~~
 {: .language-bash}
 
 ~~~
 =========================================================================== test session starts ===========================================================================
 platform darwin -- Python 3.7.3, pytest-5.2.1, py-1.8.0, pluggy-0.13.0
-rootdir: /Users/jessica/lessons/molecool
+rootdir: /Users/jessica/lessons/my_repo
 plugins: cov-2.8.1
 collected 10 items                                                                                                                                                        
 
-molecool/tests/test_measure.py ......                                                                                                                               [ 60%]
-molecool/tests/test_molecule.py ....                                                                                                                                [100%]
+my_repo/tests/test_measure.py ......                                                                                                                               [ 60%]
+my_repo/tests/test_molecule.py ....                                                                                                                                [100%]
 
 ---------- coverage: platform darwin, python 3.7.3-final-0 -----------
 Name                      Stmts   Miss  Cover
 ---------------------------------------------
-molecool/__init__.py          9      0   100%
-molecool/atom_data.py         2      0   100%
-molecool/io/__init__.py       2      0   100%
-molecool/io/pdb.py           14     12    14%
-molecool/io/xyz.py           14     11    21%
-molecool/measure.py          12      1    92%
-molecool/molecule.py         28      1    96%
-molecool/visualize.py        33     28    15%
+my_repo/__init__.py          9      0   100%
+my_repo/atom_data.py         2      0   100%
+my_repo/io/__init__.py       2      0   100%
+my_repo/io/pdb.py           14     12    14%
+my_repo/io/xyz.py           14     11    21%
+my_repo/measure.py          12      1    92%
+my_repo/molecule.py         28      1    96%
+my_repo/visualize.py        33     28    15%
 ---------------------------------------------
 TOTAL                       114     53    54%
 

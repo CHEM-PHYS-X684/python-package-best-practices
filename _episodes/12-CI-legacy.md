@@ -22,7 +22,7 @@ keypoints:
 >
 > - All Python code and tests described so far in the lesson.
 > - Configured Git and GitHub account (described in set-up)
-> - Pushed up-to-date version - with tests - of the `molecool` project to GitHub.
+> - Pushed up-to-date version - with tests - of the `my_repo` project to GitHub.
 {: .prereq}
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration),
@@ -68,9 +68,9 @@ you pushed to the repository. You wouldn't have to worry about how to configure
 Travis. However, we will go over this file in detail so you can understand what
 is happening under the hood.
 
-So far in this workshop, we have been working in the `molecool/molecool` and
-`molecool/tests` directories. We will now focus on the `.travis.yml` file, in
-the root of your project, and on some other files in the `molecool/devtools`
+So far in this workshop, we have been working in the `my_repo/my_repo` and
+`my_repo/tests` directories. We will now focus on the `.travis.yml` file, in
+the root of your project, and on some other files in the `my_repo/devtools`
 directory.
 
 First, open the `.travis.yml` file. You will see something like the following at
@@ -203,7 +203,7 @@ code coverage.
 
 ~~~
 script:
-  - pytest -v --cov=molecool molecool/tests/
+  - pytest -v --cov=my_repo my_repo/tests/
 ~~~
 
 {: .yml}
@@ -305,7 +305,7 @@ more) GitHub organizations. On the following page, double-check that you are not
 being charged, and click `Complete order and begin installation`.
 
 The next page prompts us to pick which repositories we want to associate with
-Travis. Click on `Only select repositories` and select the `molecool` repository
+Travis. Click on `Only select repositories` and select the `my_repo` repository
 from the dropdown. Tip: start typing the name of the repository to narrow down
 the choices. Once you find the repository, click on the green `Install` button
 at the bottom of the form.
@@ -315,7 +315,7 @@ at the bottom of the form.
 <br />
 
 You will then be redirected back to your Travis dashboard. You should now see
-the `molecool` repository in the 'Repositories' tab. Click on the name of the
+the `my_repo` repository in the 'Repositories' tab. Click on the name of the
 repository to see its build history and note that it says `No builds for this
 repository`. Because we pushed _before_ setting up our Travis account, we have
 not triggered any CI runs yet. A simple way to trigger a CI run is just to push
@@ -383,7 +383,7 @@ packages are never installed. We need to add them to the
 
 After these edits, commit and push to the repository. Travis will now detect a
 new commit and will start a new build automatically. On your Travis dashboard,
-select the `molecool` repository again to see a new CI build running. After a
+select the `my_repo` repository again to see a new CI build running. After a
 minute or two, you should see green checkmarks next to your build jobs.
 Congratulations! Travis CI is now set up and tracking your repository.
 
@@ -407,7 +407,7 @@ coverage percentage, but not obsess over the number. Remember that even if your
 project has 100% coverage, it does not mean it is actually bug-free.
 
 When we run `pytest`, we can get a summary of our coverage with the
-`--cov=molecool` option. While this summary is helpful, it would be much more
+`--cov=my_repo` option. While this summary is helpful, it would be much more
 useful to know _which_ lines are covered by our tests. In the following section,
 we will explore two methods that allow us to do just that.
 
@@ -418,7 +418,7 @@ reports. Run the following command at the root of your project to generate a
 report in HTML format:
 
 ~~~
-$ pytest -v --cov=molecool --cov-report=html
+$ pytest -v --cov=my_repo --cov-report=html
 ~~~
 
 {: .language-bash}
@@ -462,7 +462,7 @@ new test.
 >>
 >>     expected_value = 90 * (np.pi / 180)
 >>
->>     calculated_value = molecool.calculate_angle(r1, r2, r3)
+>>     calculated_value = my_repo.calculate_angle(r1, r2, r3)
 >>     assert expected_value == calculated_value
 >> ~~~
 >>
@@ -488,7 +488,7 @@ Marketplace](https://github.com/marketplace) and this time, select the category
 the `Open Source` plan. The entire process is very similar to what we did before
 with Travis.
 
-Once on the `Codecov` web page, notice that `molecool` is already in your
+Once on the `Codecov` web page, notice that `my_repo` is already in your
 repositories and it already has results to show you. How is this possible?
 
 The last line of our `.travis.yml` configuration file is a call to an executable
@@ -497,7 +497,7 @@ automatically for us. As a result, when our CI workflow runs successfully (all
 tests pass), Travis runs `codecov`, which send statistics of our test coverage
 automatically to Codecov.io. Neat!
 
-Back to the Codecov `molecool` report page, the sunburst plot gives a
+Back to the Codecov `my_repo` report page, the sunburst plot gives a
 hierachical view of our project and its coverage.
 
 <br />

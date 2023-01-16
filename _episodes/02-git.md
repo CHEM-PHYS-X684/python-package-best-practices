@@ -53,7 +53,7 @@ You should have `git` installed and configured from the setup instructions.
 
 In this section, we are going to  edit files in the Python package that we created earlier, and use `git` to track those changes.
 
-First, use a terminal to `cd` into the top directory of the local repository (the outer molecool directory).
+First, use a terminal to `cd` into the top directory of the local repository (the outer my_repo directory).
 
 In order for `git` to keep track of your project, or any changes in your project,
 you must first tell it that you want it to do this.
@@ -940,7 +940,7 @@ Make empty files called `testing.txt~` and `README.md~` in your repository using
 
 
 While we're at it, also make some other files that aren't important to the project.
-Make a file called `calculation.out` in `molecool/data` using your text editor of choice.
+Make a file called `calculation.out` in `my_repo/data` using your text editor of choice.
 
 Now check what Git says about these files:
 
@@ -957,8 +957,8 @@ Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
 	README.md~
-	molecool/data/calculation.in
-	molecool/data/calculation.out
+	my_repo/data/calculation.in
+	my_repo/data/calculation.out
 	testing.txt~
 
 nothing added to commit but untracked files present (use "git add" to track)

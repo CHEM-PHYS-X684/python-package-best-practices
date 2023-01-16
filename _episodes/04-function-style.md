@@ -21,7 +21,7 @@ keypoints:
 
 # Editing a function in our package
 Let's look at one of the functions in our package.
-Open your `molecool/functions.py` module in a text editor.
+Open your `my_repo/functions.py` module in a text editor.
 The function `open_pdb` reads coordinates and atom symbols from a pdb file.
 
 ~~~
@@ -43,22 +43,22 @@ def open_pdb(f_loc):
 If we want to test our function, we require a pdb file.
 The workshop materials downloaded during the setup include a set of pdb examples.
 These are found in `molssi_beter_practices/starting_material/data/pdb/`.
-We want to store these files in our `molecool` directory.
+We want to store these files in our `my_repo` directory.
 Luckily, `cookiecutter` created a folder designed specifically for that purpose.
-The folder is in `molecool/data/`.
+The folder is in `my_repo/data/`.
 This folder can contain any data useful for testing of the basic functionality of our code.
 Be mindful that this folder is also downloaded when installing our package,
 so do not include data whose size is significant. 
 
 Go ahead and copy the pdb files to a new folder `pdb` inside the data folder.
-With the files in our `molecool` folder,
+With the files in our `my_repo` folder,
 we can access the function when we execute it in the interactive Python interpreter.
 Test this by opening the interactive Python interpreter and typing the following.
 
 ~~~
 >>> import os
->>> from molecool import open_pdb
->>> pdb_file = os.path.join('molecool', 'data', 'pdb', 'water.pdb')
+>>> from my_repo import open_pdb
+>>> pdb_file = os.path.join('my_repo', 'data', 'pdb', 'water.pdb')
 >>> symbols, coords = open_pdb(pdb_file)
 >>> symbols
 ~~~
@@ -144,11 +144,11 @@ Neither of these is our intended behavior, but would occur without us knowing (s
 Let's try this out. In a python interpreter, try the following:
 
 ~~~
->>> import molecool
+>>> import my_repo
 >>> import numpy as np
 >>> test_atoms = ["H", "O"]
 >>> test_coords = np.array([[1,0,0],[0,0,0], [0,1,0]])
->>> molecool.write_xyz("test.xyz", test_atoms, test_coords)
+>>> my_repo.write_xyz("test.xyz", test_atoms, test_coords)
 ~~~
 {: .language-python}
 
@@ -183,11 +183,11 @@ Let's try this out with some fake data.
 Using the same example as before:
 
 ~~~
->>> import molecool
+>>> import my_repo
 >>> import numpy as np
 >>> test_atoms = ["H", "O"]
 >>> test_coords = np.array([[1,0,0],[0,0,0], [0,1,0]])
->>> molecool.write_xyz("test.xyz", test_atoms, test_coords)
+>>> my_repo.write_xyz("test.xyz", test_atoms, test_coords)
 ~~~
 {: .language-python}
 
@@ -318,7 +318,7 @@ Now that we've written a new function in our project, we should commit our chang
 
 ~~~
 $ git add .
-$ git commit -m "add open_pdb function to molecool"
+$ git commit -m "add open_pdb function to my_repo"
 $ git push origin main
 ~~~
 {: .language-bash}
@@ -327,7 +327,7 @@ $ git push origin main
 > Below is the `calculate_distance` function that takes two points in 3D space
 > and returns the distance between them. Even though it works just fine,
 > the variable names are not very clear, and it doesn't follow PEP8 styling.
-> Take a couple of minutes to reformat this function in the `molecool/functions.py` module.
+> Take a couple of minutes to reformat this function in the `my_repo/functions.py` module.
 > ~~~
 > def calculate_distance(rA, rB):
 >     d=(rA-rB)
@@ -354,7 +354,7 @@ Now we've successfully styled function according to PEP8! However, if we compare
 Keeping your previous Python interpreter open, type the following:
 
 ~~~
-import molecool as mc
+import my_repo as mc
 help(mc.canvas)
 ~~~
 {: .language-python}
@@ -365,7 +365,7 @@ The code above calls Python's built-in function, `help`.
 For our canvas function, it displays the multi-line comment (called a `docstring`), that is written beneath the function definition.
 
 ~~~
-Help on function canvas in module molecool.functions:
+Help on function canvas in module my_repo.functions:
 
 canvas(with_attribution=True)
     Placeholder function to show example docstring (NumPy format)
@@ -436,7 +436,7 @@ which we used for the example above and for the `calculate_distance` function.
 > When you add a docstring to a function or module, python automatically adds this to the `__doc__` attribute of the object.
 >
 > You can also see an object's docstring by typing `object.__doc__` into the Python interpreter.
-> For example, to see the docstring associated with the canvas function, `molecool.canvas.__doc__` into the Python interpreter (after importing `molecool`, of course.)
+> For example, to see the docstring associated with the canvas function, `my_repo.canvas.__doc__` into the Python interpreter (after importing `my_repo`, of course.)
 {: .callout}
 
 ### Sections of a Docstring
@@ -633,7 +633,7 @@ $ pip install black
 Now we can use `black` on our python files.
 
 ~~~
-$ black molecool/functions.py
+$ black my_repo/functions.py
 ~~~
 {: .language-bash}
 
@@ -652,7 +652,7 @@ we should commit our changes and push to GitHub.
 
 ~~~
 $ git add .
-$ git commit -m "run black on molecool"
+$ git commit -m "run black on my_repo"
 $ git push origin master
 ~~~
 {: .language-bash}
@@ -674,18 +674,18 @@ $ pip install flake8
 You can run it on our `functions` module.
 
 ~~~
-$ flake8 molecool/functions.py
+$ flake8 my_repo/functions.py
 ~~~
 {: .language-bash}
 
 Let's examine one of the errors shown by the flake8 command above.
 
 ~~~
-molecool/functions.py:1:1: F401 'os' imported but unused
+my_repo/functions.py:1:1: F401 'os' imported but unused
 ~~~
 {: .output}
 
-This tells us it is looking at line 1 of `molecool/functions.py` (your line number may vary).
+This tells us it is looking at line 1 of `my_repo/functions.py` (your line number may vary).
 `F401` is an error code which you can look up.
 Here, we are importing `os`, but never using it.
 We should remove this from our file.
@@ -693,7 +693,7 @@ We should remove this from our file.
 You will also see a second "unused import" error:
 
 ~~~
-molecool/functions.py:5:1: F401 'mpl_toolkits.mplot3d.Axes3D' imported but unused
+my_repo/functions.py:5:1: F401 'mpl_toolkits.mplot3d.Axes3D' imported but unused
 ~~~
 {: .output}
 

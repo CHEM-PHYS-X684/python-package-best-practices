@@ -25,7 +25,7 @@ and convert it into a well-structured package.
 ## Package Structure
 Let's start by reviewing the package structure provided to us by the [CMS CookieCutter].
 We have a directory containing our project with a number of additional features.
-Under our package directory, `molecool`, we can see our current python module `functions.py`.
+Under our package directory, `my_repo`, we can see our current python module `functions.py`.
 For a more detailed explanation of the rest of the package structure,
 please review the [package setup] section of the lessons.
 
@@ -35,7 +35,7 @@ please review the [package setup] section of the lessons.
 ├── LICENSE                         <- License file
 ├── MANIFEST.in                     <- Packaging information for pip
 ├── README.md                       <- Description of project which GitHub will render
-├── molecool                        <- Basic Python Package import file
+├── my_repo                        <- Basic Python Package import file
 │   ├── __init__.py                 <- Basic Python Package import file
 │   ├── functions.py                <- Starting package module
 │   ├── data                        <- Sample additional data (non-code) which can be packaged. Just an example, delete in production
@@ -43,7 +43,7 @@ please review the [package setup] section of the lessons.
 │   │   └── look_and_say.dat
 │   └── tests                       <- Unit test directory with sample tests
 │       ├── __init__.py
-│       └── test_molecool.py
+│       └── test_my_repo.py
 ├── devtools                        <- Deployment, packaging, and CI helpers directory
 │   ├── README.md
 │   ├── conda-envs                  <- Conda environments for testing
@@ -459,14 +459,14 @@ we should commit our changes and push to GitHub.
 
 ~~~
 $ git add .
-$ git commit -m "organize molecool into modules and subpackage"
+$ git commit -m "organize my_repo into modules and subpackage"
 $ git push origin main
 ~~~
 {: .language-bash}
 
 ## Fixing Imports
 When we first copied the functions from the Jupyter Notebook into `functions.py`,
-we were able to import `molecool` package and access the functions within `functions.py`.
+we were able to import `my_repo` package and access the functions within `functions.py`.
 After we extracted the functions from that file, we won't be able to import those functions in the same way.
 In fact, we won't be able to access them at all.
 Every time we restructure our code or create new folders we have to be careful and modify the `__init__.py` accordingly.
@@ -484,8 +484,8 @@ from .visualize import draw_molecule, bond_histogram
 In this way, we should be able to call each of the functions after importing our module.
 
 ~~~
->>> import molecool
->>> molecool.build_bond_list()
+>>> import my_repo
+>>> my_repo.build_bond_list()
 ~~~
 {: .language-python}
 
@@ -569,7 +569,7 @@ import matplotlib.pyplot as plt
 
 In this case, the `.` is saying look within the package `matplotlib` and grab the subpackage (or module) `pyplot`.
 In our case, we are not using a name before the `.` so where is it looking?
-It is looking within the current package/directory, or in this case `molecool` for a module or package named `atom_data`, from which it will import the `atom_colors` dictionary.
+It is looking within the current package/directory, or in this case `my_repo` for a module or package named `atom_data`, from which it will import the `atom_colors` dictionary.
 
 
 > ## Check your understanding
@@ -591,8 +591,8 @@ If you use a python interpreter in a directory which is not directly above your 
 We can use the `dir` functions to see what is available in a particular module or object:
 
 ~~~
->>> import molecool
->>> dir(molecool)
+>>> import my_repo
+>>> dir(my_repo)
 ~~~
 {: .language-python}
 
@@ -604,7 +604,7 @@ You should see something similar to the following
 ~~~
 {: .output}
 
-These are all the things available to us from importing `molecool`.
+These are all the things available to us from importing `my_repo`.
 You will see your `functions` module, but you will also see `np` and `plt`.
 This comes from using `from .functions import *` and is why using `import *` is usually considered a bad practice.
 
@@ -616,8 +616,8 @@ We haven't yet included our `io` subpackage, meaning that the user would have to
 For example, to use the xyz functions,
 
 ~~~
-import molecool.io.xyz
-dir(molecool.io.xyz.open_xyz)
+import my_repo.io.xyz
+dir(my_repo.io.xyz.open_xyz)
 ~~~
 {: .language-python}
 
@@ -630,7 +630,7 @@ At this point, the way we actually do this import is going to be stylistic - how
 The goal we are going for is to call an IO function using
 
 ~~~
-molecool.io.IO_FUNCTION
+my_repo.io.IO_FUNCTION
 ~~~
 {: .language-python}
 
@@ -659,7 +659,7 @@ from . import io
 We can now call our I/O functions using our target syntax.
 
 ~~~
->>> molecool.io.open_pdb()
+>>> my_repo.io.open_pdb()
 ~~~
 {: .language-python}
 
@@ -680,7 +680,7 @@ We could even make these functions more accessible by removing the need for the 
 This would allow us to call functions by simply typing the following.
 
 ~~~
->>> molecool.open_pdb()
+>>> my_repo.open_pdb()
 ~~~
 {: .language-python}
 

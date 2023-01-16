@@ -63,15 +63,14 @@ once you have provided some starting information.
 You will see an interactive prompt which asks questions about your project.
 Here, the prompt appears first, followed by the default value in square brackets.
 The first question will be on your project name.
-You have very cleverly decided to give it the name `molecool`
-(it's like molecule, but with `cool` instead, because of your cool visualizations - get it?)
+Let's decide to give it the name `my_repo`.
 
 Answer the questions according to the following.
 If nothing is given after the colon (`:`), hit enter to use the default value.
 ~~~
-project_name [ProjectName]: molecool
-repo_name [molecool]:
-first_module_name [molecool]: functions
+project_name [ProjectName]: my_repo
+repo_name [my_repo]:
+first_module_name [my_repo]: functions
 author_name [Your name (or your organization/company/team)]: *YOUR_NAME_HERE*
 author_email [Your email (or your organization/company/team)]: *YOUR_EMAIL_ADDRESS_HERE*
 description [A short description of the project (less than one line).]: A Python package for analyzing and visualizing xyz files.
@@ -105,7 +104,7 @@ The `repo_name` must be a valid Python module name and cannot contain spaces.
 
 The next choice is about the first module name.
 Modules are the `.py` files which contain python code.
-The default for this is the `repo_name`, but we will change this to avoid confusion (the module `molecool.py` in a folder named `molecool` in a folder named `molecool`??).
+The default for this is the `repo_name`, but we will change this to avoid confusion (the module `my_repo.py` in a folder named `my_repo` in a folder named `my_repo`??).
 For now, we'll just name our first module `functions`, and this is where we will put all of our starting functions.
 
 Another thing that CookieCutter checks for is your email address.
@@ -159,7 +158,7 @@ Choose "yes" for this workshop.
 
 ### Reviewing directory contents
 Now we can examine the project layout the CookieCutter has set up for us.
-Navigate to the newly created `molecool` directory.
+Navigate to the newly created `my_repo` directory.
 You should see the following directory structure.
 
 ```
@@ -168,7 +167,7 @@ You should see the following directory structure.
 ├── LICENSE                         <- License file
 ├── MANIFEST.in                     <- Packaging information for pip
 ├── README.md                       <- Description of project which GitHub will render
-├── molecool                        <- Basic Python Package import file
+├── my_repo                        <- Basic Python Package import file
 │   ├── __init__.py                 <- Basic Python Package import file
 │   ├── functions.py                <- Starting package module
 │   ├── data                        <- Sample additional data (non-code) which can be packaged. Just an example, delete in production
@@ -176,7 +175,7 @@ You should see the following directory structure.
 │   │   └── look_and_say.dat
 │   └── tests                       <- Unit test directory with sample tests
 │       ├── __init__.py
-│       └── test_molecool.py
+│       └── test_my_repo.py
 ├── devtools                        <- Deployment, packaging, and CI helpers directory
 │   ├── README.md
 │   ├── conda-envs                  <- Conda environments for testing
@@ -221,12 +220,12 @@ Note: `tree` will not show you the helpful labels after `<-` (those were added b
 CookieCutter has created a lot of files!
 They can be thought of as three sections.
 In the top level of our project we have a folder for tools related to development (`devtools`),
-documentation (`docs`) and to the package itself (`molecool`).
-We will first be working in the `molecool` folder to build our package, and adding more things later.
+documentation (`docs`) and to the package itself (`my_repo`).
+We will first be working in the `my_repo` folder to build our package, and adding more things later.
 
 ~~~
 ...
-├── molecool
+├── my_repo
 │   ├── __init__.py                 <- Basic Python Package import file
 │   ├── functions.py                <- Starting package module
 │   ├── data                        <- Sample additional data (non-code) which can be packaged
@@ -259,11 +258,11 @@ as well as sample data (in the `data` folder), and tests (in the `tests` folder.
 > To read more about Python packages vs. modules, check out [Python's documentation].
 {: .callout}
 
-## The `molecool` directory
+## The `my_repo` directory
 Navigate inside our package directory. From the directory where you ran CookieCutter,
 
 ~~~
-$ cd molecool
+$ cd my_repo
 ~~~
 {: .language-bash}
 
@@ -272,7 +271,7 @@ $ cd molecool
 The `__init__.py` file is a special file recognized by the Python interpreter which makes a directory into a package.
 This file can be blank in some cases, however, we will use it to define how the user interacts with the functions in our package.
 
-Contents of `molecool/molecool/__init__.py`:
+Contents of `my_repo/my_repo/__init__.py`:
 ~~~
 """A Python package for analyzing and visualizing xyz files."""
 
@@ -298,13 +297,13 @@ from .functions import *
 
 goes to the `functions.py` file, and brings everything that is defined there into the file.
 When we use our function defined in `functions.py`,
-that means we will be able to just say `molecool.canvas()` instead of giving the full path `molecool.functions.canvas()`.
+that means we will be able to just say `my_repo.canvas()` instead of giving the full path `my_repo.functions.canvas()`.
 If that's confusing, don't worry too much for now.
 We will be returning to `__init__.py` in a few minutes.
 For now, just note that it exists and makes our directory into a package.
 
 ### Our first module
-Once inside the `molecool` folder (`molecool/molecool`), examine the files that are there.
+Once inside the `my_repo` folder (`my_repo/my_repo`), examine the files that are there.
 View the module (`functions.py`) in a text editor.
 We see a few things about this file.
 The top begins with a description of this module surrounded by three quotations (`"""`).
@@ -339,7 +338,7 @@ so that we can try out our functions and package as we develop it.
 We access development mode using the `-e` option to `pip`.
 
 #### Reviewing the generated config files
-Return to the top directory (`molecool`).
+Return to the top directory (`my_repo`).
 Two of the files CookieCutter generated are `pyproject.toml` and `setup.cfg`.
 These are the configuration files for our packaging and testing tools.
 `pyproject.toml` tells [setuptools] about your package (such as the name and version) as well as which code files to include.
@@ -377,15 +376,15 @@ Here, the `-e` indicates that we are installing this project in *editable* mode
 [*development mode*](https://setuptools.readthedocs.io/en/latest/userguide/commands.html#develop-deploy-the-project-source-in-development-mode)),
 while `.` indicates to install from the local directory (you could also specify a path here).
 Now, if you examine the contents of your site packages folder,
-you should see a link to `molecool` (`molecool.egg-link`).
+you should see a link to `my_repo` (`my_repo.egg-link`).
 The folder has also been added to your path (check `sys.path` again.)
 
 Now, we can use our package from any directory, similar to how we can use other installed packages like `numpy`.
 Open Python, and type
 
 ~~~
->>> import molecool
->>> molecool.canvas()
+>>> import my_repo
+>>> my_repo.canvas()
 ~~~
 {: .language-python}
 

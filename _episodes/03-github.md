@@ -28,7 +28,7 @@ Now, let's put this project on GitHub so that we can share it with others.
 In your browser, navigate to [github.com][GitHub].
 Log in to you account if you are not already logged in.
 On the left side of the page, click the green button that says `New` to create a new repository.
-Give the repository the name `molecool`.
+Give the repository the name `my_repo`.
 
 Note for the last question, "Initialize this repository with a README".
 We will leave this unchecked in our case because we have an existing repository.
@@ -55,7 +55,7 @@ $ git remote -v
 You should see no output.
 Now, follow the instructions on GitHub under "...or push an existing repository from the command line"
 ~~~
-$ git remote add origin git@github.com:YOUR_GITHUB_USERNAME/molecool.git
+$ git remote add origin git@github.com:YOUR_GITHUB_USERNAME/my_repo.git
 $ git branch -M main
 $ git push -u origin main
 ~~~
@@ -64,7 +64,7 @@ $ git push -u origin main
 The first command adds a remote named `origin` and sets the URL to our repository.
 The word `origin` here is simply a word that is a shortcut for the location of our repository.
 We could have called it anything (like `pickle`, or `banana`, or anything we wanted), but `origin` is used by convention.
-Now, whenever we say `origin`, git knows that we really mean `git@github.com:YOUR_GITHUB_USERNAME/molecool.git`. 
+Now, whenever we say `origin`, git knows that we really mean `git@github.com:YOUR_GITHUB_USERNAME/my_repo.git`. 
 
 The second command changes our primary branch name from `master` to `main`.
 GitHub recently decided (as of June 2020) to switch the name of your `main` branch from `master` to `main`.
@@ -116,8 +116,8 @@ Next, make another copy of your repository.
 We'll use this to simulate working on another computer.
 
 ~~~
-$ git clone git@github.com:YOUR_GITHUB_USERNAME/molecool.git molecool_friend
-$ cd molecool_friend
+$ git clone git@github.com:YOUR_GITHUB_USERNAME/my_repo.git my_repo_friend
+$ cd my_repo_friend
 ~~~
 {: .language-bash}
 
@@ -132,8 +132,8 @@ $ git remote -v
 {: .language-bash}
 
 ~~~
-origin  git@github.com:YOUR_GITHUB_USERNAME/molecool.git (fetch)
-origin  git@github.com:YOUR_GITHUB_USERNAME/molecool.git (push)
+origin  git@github.com:YOUR_GITHUB_USERNAME/my_repo.git (fetch)
+origin  git@github.com:YOUR_GITHUB_USERNAME/my_repo.git (push)
 ~~~
 {: .output}
 
@@ -222,7 +222,7 @@ remote: Counting objects: 100% (4/4), done.
 remote: Compressing objects: 100% (1/1), done.
 remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From github.com:YOUR_GITHUB_USERNAME/molecool
+From github.com:YOUR_GITHUB_USERNAME/my_repo
  * branch            main     -> FETCH_HEAD
    2ac4843..754da2b  main     -> origin/main
 Updating 2ac4843..754da2b
@@ -266,7 +266,7 @@ $ git push
 Now switch over to the `friend` clone.
 
 ~~~
-$ cd ../molecool_friend
+$ cd ../my_repo_friend
 ~~~
 {: .language-bash}
 
@@ -287,9 +287,9 @@ $ git push
 {: .language-bash}
 
 ~~~
-To github.com:YOUR_GITHUB_USERNAME/molecool.git
+To github.com:YOUR_GITHUB_USERNAME/my_repo.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'github.com:YOUR_GITHUB_USERNAME/molecool.git'
+error: failed to push some refs to 'github.com:YOUR_GITHUB_USERNAME/my_repo.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
@@ -312,7 +312,7 @@ remote: Counting objects: 100% (9/9), done.
 remote: Compressing objects: 100% (4/4), done.
 remote: Total 6 (delta 3), reused 5 (delta 2), pack-reused 0
 Unpacking objects: 100% (6/6), done.
-From github.com:YOUR_GITHUB_USERNAME/molecool
+From github.com:YOUR_GITHUB_USERNAME/my_repo
    754da2b..de54818  main     -> origin/main
 Auto-merging testing.txt
 CONFLICT (content): Merge conflict in testing.txt
@@ -369,7 +369,7 @@ This is the end of testing.txt
 ~~~
 
 The conflict is shown within the `<<<<<<<` and `>>>>>>>` bits.
-The part before the `=======` is what we added in the commit in the `molecool_friend` clone,
+The part before the `=======` is what we added in the commit in the `my_repo_friend` clone,
 while the part after it comes from the original local clone.
 We need to decide what to do about the conflict, tidy it up, and then make a new commit.
 Edit `testing.txt` so that it reads:

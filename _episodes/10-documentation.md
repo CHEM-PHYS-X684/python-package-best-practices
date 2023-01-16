@@ -163,9 +163,9 @@ See this [reStructured Text Cheat Sheet] for info on reStructuredText.
 Let's start by adding a simple a description to your `index.rst` under the first heading.
 
 ~~~
-Welcome to molecool's documentation!
+Welcome to my_repo's documentation!
 =========================================================
-molecool is a Python package designed to read in, perform analysis,
+my_repo is a Python package designed to read in, perform analysis,
 and visualize molecular coordinates. The file formats `xyz` and `pdb` are
 currently supported.
 ~~~
@@ -187,7 +187,7 @@ Click the link on your HTML documentation  to see what is there already.
 Right now, it says
 
 ~~~
-This page details how to get started with molecool.
+This page details how to get started with my_repo.
 ~~~
 
 To change this, we will edit the content of `getting_started.rst`
@@ -205,17 +205,17 @@ To change this, we will edit the content of `getting_started.rst`
 >> Getting Started
 >> ===============
 >>
->> This page details how to get started with molecool. Molecool is a package which was developed for the MolSSI Best Practices workshop.
+>> This page details how to get started with my_repo. Molecool is a package which was developed for the MolSSI Best Practices workshop.
 >>
 >> Installation
 >> ------------
->> To install molecool, you will need an environment with the following packages:
+>> To install my_repo, you will need an environment with the following packages:
 >>
 >> * Python 3.7
 >> * NumPy
 >> * Matplotlib
 >>
->> Once you have these packages installed, you can install molecool in the same environment using
+>> Once you have these packages installed, you can install my_repo in the same environment using
 >> ::
 >>
 >>     pip install -e .
@@ -233,11 +233,11 @@ Usage
 Once installed, you can use the package. This example draws a benzene molecule from an xyz file.
 ::
 
-    import molecool
+    import my_repo
 
-    benzene_symbols, benzene_coords = molecool.open_xyz('benzene.xyz')
-    benzene_bonds = molecool.build_bond_list(benzene_coords)
-    molecool.draw_molecule(benzene_coords, benzene_symbols, draw_bonds=benzene_bonds)
+    benzene_symbols, benzene_coords = my_repo.open_xyz('benzene.xyz')
+    benzene_bonds = my_repo.build_bond_list(benzene_coords)
+    my_repo.draw_molecule(benzene_coords, benzene_symbols, draw_bonds=benzene_bonds)
 ~~~
 
 ## Sphinx Directives
@@ -273,11 +273,11 @@ For our Python example,
 ~~~
 .. code-block:: python
 
-    import molecool
+    import my_repo
 
-    benzene_symbols, benzene_coords = molecool.open_xyz('benzene.xyz')
-    benzene_bonds = molecool.build_bond_list(benzene_coords)
-    molecool.draw_molecule(benzene_coords, benzene_symbols, draw_bonds=benzene_bonds)
+    benzene_symbols, benzene_coords = my_repo.open_xyz('benzene.xyz')
+    benzene_bonds = my_repo.build_bond_list(benzene_coords)
+    my_repo.draw_molecule(benzene_coords, benzene_symbols, draw_bonds=benzene_bonds)
 ~~~
 
 The line `.. code-block:: python` is the line which starts the directive. 
@@ -353,7 +353,7 @@ For example, for the `Getting Started` page, the page heading is 'Getting Starte
 >>
 >> If you remove `about` from the TOC tree and rebuild, you will see the following error
 >> ~~~
->>  ...PATH_TO_DIRECTORY/molecool/docs/about.rst: WARNING: document isn't included in any toctree
+>>  ...PATH_TO_DIRECTORY/my_repo/docs/about.rst: WARNING: document isn't included in any toctree
 >> ~~~
 >> {: .error}
 >> Sphinx will warn you if you've created a page and not linked to it.
@@ -367,7 +367,7 @@ For example, for the `Getting Started` page, the page heading is 'Getting Starte
 > make latexpdf
 > ~~~
 > {: .language-bash}
-> This will create a folder called `pdf` in the `build` directory, and you should have a file in this directory called `molecool.pdf` containing all of your documentation. Each `rst` file is a chapter of the documentation, instead of a different page.
+> This will create a folder called `pdf` in the `build` directory, and you should have a file in this directory called `my_repo.pdf` containing all of your documentation. Each `rst` file is a chapter of the documentation, instead of a different page.
 {: .callout}
 
 ## API Documentation
@@ -394,7 +394,7 @@ API Documentation
 .. autosummary::
    :toctree: autosummary
 
-   molecool.canvas
+   my_repo.canvas
 ~~~
 
 We are using a Sphinx extension called `autosummary` which is part of AutoDoc.
@@ -413,8 +413,8 @@ API Documentation
 .. autosummary::
    :toctree: autosummary
 
-   molecool.canvas
-   molecool.calculate_distance
+   my_repo.canvas
+   my_repo.calculate_distance
 
 ~~~
 
@@ -426,9 +426,9 @@ API Documentation
 >> .. autosummary::
 >>     :toctree: autosummary
 >>
->>     molecool.canvas
->>     molecool.calculate_distance
->>     molecool.calculate_angle
+>>     my_repo.canvas
+>>     my_repo.calculate_distance
+>>     my_repo.calculate_angle
 >> ~~~
 > {: .solution}
 {: .challenge}
@@ -444,7 +444,7 @@ Add a page called `measure.rst` with the following contents:
 Measure module
 ==============
 
-.. automodule:: molecool.measure
+.. automodule:: my_repo.measure
 
     This is some additional information I want to say about the measure module.
 
@@ -495,7 +495,7 @@ Using this strategy, you can selectively add documentation for functions or clas
 >     'sphinx.ext.extlinks',
 > ]
 >
-> autoapi_dirs = ['../molecool']
+> autoapi_dirs = ['../my_repo']
 > autoapi_ignore = ["*/tests/*",
 >                   "*_version.py"]
 >                   
@@ -577,8 +577,8 @@ Go to the [Read The Docs] website.
 Log in with your GitHub username and hook the repository to ReadTheDocs.
 This is done by clicking `Import a Project` button on your dashboard.
 Then on `Import a Repository` page click the `Import Manually` button and fill the form as following:
-1. Use `molecool-YOUR_GITHUB_USERNAME` in the `Name` field rather than just `molecool` to create unique URL for your Read The Docs documentation,
-2. Fill the `Repository URL` with your molecool repository URL,
+1. Use `my_repo-YOUR_GITHUB_USERNAME` in the `Name` field rather than just `my_repo` to create unique URL for your Read The Docs documentation,
+2. Fill the `Repository URL` with your my_repo repository URL,
 3. Choose Git as your `Repository type`, and
 4. Type `main` as your `Default branch`.
 

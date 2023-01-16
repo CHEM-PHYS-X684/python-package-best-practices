@@ -99,9 +99,9 @@ Total 3 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 remote: 
 remote: Create a pull request for 'collab_instructions' on GitHub by visiting:
-remote:      https://github.com/YOUR_USERNAME/molecool/pull/new/collab_instructions
+remote:      https://github.com/YOUR_USERNAME/my_repo/pull/new/collab_instructions
 remote: 
-To github.com:YOUR_USERNAME/molecool.git
+To github.com:YOUR_USERNAME/my_repo.git
  * [new branch]      collab_instructions -> collab_instructions
 ~~~
 {: .output}

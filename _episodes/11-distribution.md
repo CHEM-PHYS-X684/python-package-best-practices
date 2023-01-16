@@ -72,7 +72,7 @@ Make sure that your changes are checked in and that you don't have
 extra files sitting around.
 
 Tag the latest commit with a version identifier.
-Let's get ready to publish `molecool` 1.0.0a1, the first alpha release of our package.
+Let's get ready to publish `my_repo` 1.0.0a1, the first alpha release of our package.
 ~~~
 git tag 1.0.0a1
 ~~~
@@ -131,7 +131,7 @@ distribution archive for our package before installing the package in our
 environment.
 What does this mean?
 More importantly, what does it have to do with letting other people do
-`pip install molecool` and get my package automatically downloaded from
+`pip install my_repo` and get my package automatically downloaded from
 "the cloud"?
 
 Setuptools is not the only package for configuring and building Python
@@ -200,7 +200,7 @@ an initial "alpha" or "beta" release of your package to see how it looks and to
 do test installations.
 
 Note that pypi.org enforces universal uniqueness of packages and versions.
-Once you have uploaded `molecool` version `1.0.0`, you cannot replace it;
+Once you have uploaded `my_repo` version `1.0.0`, you cannot replace it;
 you can only upload additional versions. (You can "yank" a release, but this
 only marks the package as "yanked", indicating it should not be used.
 It is still out there.)
